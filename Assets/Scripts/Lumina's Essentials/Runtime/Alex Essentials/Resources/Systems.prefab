@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8484071255152758871}
+  - component: {fileID: 112108063378520349}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -64,6 +65,18 @@ Transform:
   m_Father: {fileID: 2075164956253327076}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112108063378520349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061915314229387956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ae7482e467b9b4ebfcff6cc0beddd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9208129043183736912
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea4069c1115be84cb340ba1a70a7c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMusic: {fileID: 0}
+  defaultMusic: {fileID: 8300000, guid: a111a764ad5be964eabad121361a1e08, type: 3}
   musicFadeDuration: 1
-  musicVolume: 1
+  musicVolume: 0.686
