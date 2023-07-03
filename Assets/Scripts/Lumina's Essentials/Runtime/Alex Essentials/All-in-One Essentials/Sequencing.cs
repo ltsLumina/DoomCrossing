@@ -104,10 +104,10 @@ namespace Lumina.Essentials
         /// <example>StartCoroutine(DelayedAction(() => action, 2,5f);</example>
         /// <example>IEnumerator delayedAction = DelayedAction(() => action, 2.5f);</example> // Alternate syntax.
         /// <param name="action">The action or method to run. </param>
-        /// <param name="delayInSeconds">The delay before running the method.</param>
+        /// <param name=" delayInSeconds">The delay before running the method.</param>
         /// <param name="useRealtime">Waits the delayInSeconds using unscaled time. </param>
         /// <param name="debugLog">Whether or not to debug the waiting message and the completion message. </param>
-        public static IEnumerator DelayedAction(Action action = default, float delayInSeconds = default, bool useRealtime = false, bool debugLog = false)
+        public static IEnumerator DelayedAction(Action action, float delayInSeconds = default, bool useRealtime = false, bool debugLog = false)
         { 
             // Debug the waiting message.
             if (debugLog) Debug.Log($"Waiting for {delayInSeconds} seconds...");
