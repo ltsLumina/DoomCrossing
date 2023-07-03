@@ -1,9 +1,6 @@
 using UnityEngine;
 
-public class GameManager : SingletonPersistent<GameManager>
+public class GameManager : MonoBehaviour
 {
-    void Start()
-    {
-        Debug.Log("William has big 4head haha funni");
-    }
+
 }

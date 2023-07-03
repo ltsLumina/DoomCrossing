@@ -1,5 +1,9 @@
+#region
+using System;
 using UnityEngine;
 using static UnityEngine.Object;
+using Random = UnityEngine.Random;
+#endregion
 
 namespace Lumina.Essentials
 {
@@ -8,8 +12,7 @@ namespace Lumina.Essentials
     /// </summary>
     public static class Helpers
     {
-        // -- Camera --
-        
+        #region Camera
         static Camera cameraMain;
 
         /// <summary>
@@ -24,13 +27,11 @@ namespace Lumina.Essentials
                 return cameraMain;
             }
         }
-        
-        
-        // -- Audio --
-        
-        
+        #endregion
+
+        #region Audio
         /// <summary>
-        /// Plays the given audio clip on the given audio source with a random pitch between the given min and max pitch.
+        ///     Plays the given audio clip on the given audio source with a random pitch between the given min and max pitch.
         /// </summary>
         /// <param name="audioClip"></param>
         /// <param name="audioSource"></param>
@@ -42,10 +43,9 @@ namespace Lumina.Essentials
             audioSource.pitch = randomPitch;
             audioSource.PlayOneShot(audioClip);
         }
-        
-        
-        // -- Miscellaneous --
+        #endregion
 
+        #region Miscellaneous
         /// <summary>
         ///     Destroys all children of the given transform.
         ///     Can be used as extension method.
@@ -53,7 +53,28 @@ namespace Lumina.Essentials
         /// <param name="parent"></param>
         public static void DeleteAllChildren(this Transform parent)
         {
-            foreach (Transform child in parent) Destroy(child.gameObject);
+            foreach (Transform child in parent) { Destroy(child.gameObject); }
         }
+
+        /// <summary>
+        ///     Returns a random Vector2 between the given min and max values.
+        /// </summary>
+        /// <param name="Vector2"> The Vector2 to be used as the base for the random Vector2.</param>
+        /// <param name="min"> The minimum value for the random Vector2.</param>
+        /// <param name="max"> The maximum value for the random Vector2.</param>
+        /// <returns></returns>
+        public static Vector2 RandomVector(this Vector2 Vector2, float min, float max) 
+            => new (Random.Range(min, max), Random.Range(min, max));
+
+        /// <summary>
+        /// Overload of the RandomVector method that takes a Vector3 instead of a Vector2.
+        /// </summary>
+        /// <param name="Vector3"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static Vector3 RandomVector(this Vector3 Vector3, float min, float max) 
+            => new (Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
+        #endregion
     }
 }
