@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Aim_Down_Sights : MonoBehaviour
@@ -10,7 +9,7 @@ public class Aim_Down_Sights : MonoBehaviour
     [SerializeField] Vector3 weaponPosition; // set to 0 0 0 in inspector
 
     [SerializeField] float aimSpeed = 0.25f;  // time to enter ADS
-    [SerializeField] float _defaultFOV = 80f; // FOV in degrees
+    [SerializeField] float defaultFOV = 80f; // FOV in degrees
     [SerializeField] float zoomRatio = 0.5f;  // 1/zoom times
 
     [SerializeField] CameraController fpsCam; // player camera
@@ -21,7 +20,7 @@ public class Aim_Down_Sights : MonoBehaviour
     PlayerMovement player;
 
     // Cached Hashes
-    readonly static int IsAds = Animator.StringToHash("isADS");
+    readonly static int IsADS = Animator.StringToHash("isADS");
 
     void Start()
     {
@@ -37,10 +36,10 @@ public class Aim_Down_Sights : MonoBehaviour
         {
             weaponPosition = Vector3.Lerp(weaponPosition, adsPosition.localPosition, aimSpeed * Time.unscaledDeltaTime);
             activeWeapon.localPosition = weaponPosition;
-            SetFieldOfView(Mathf.Lerp(fpsCam.FOV, zoomRatio * _defaultFOV, aimSpeed * Time.unscaledDeltaTime));
+            SetFieldOfView(Mathf.Lerp(fpsCam.FOV, zoomRatio * defaultFOV, aimSpeed * Time.unscaledDeltaTime));
 
             // slow down idle animation
-            gunAnimator.SetBool(IsAds, true);
+            gunAnimator.SetBool(IsADS, true);
 
             // Allow witch time while in the air and aiming.
             if (!player.IsGrounded) timeManager.DoSlowMotion();
@@ -49,8 +48,8 @@ public class Aim_Down_Sights : MonoBehaviour
         {
             weaponPosition = Vector3.Lerp(weaponPosition, defaultPosition.localPosition, aimSpeed * Time.unscaledDeltaTime);
             activeWeapon.localPosition = weaponPosition;
-            SetFieldOfView(Mathf.Lerp(fpsCam.FOV, _defaultFOV, aimSpeed * Time.unscaledDeltaTime));
-            gunAnimator.SetBool(IsAds, false);
+            SetFieldOfView(Mathf.Lerp(fpsCam.FOV, defaultFOV, aimSpeed * Time.unscaledDeltaTime));
+            gunAnimator.SetBool(IsADS, false);
             TimeManager.ResetTimeScale();
         }
     }
